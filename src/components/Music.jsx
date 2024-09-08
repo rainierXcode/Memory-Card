@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 export default function Music() {
   const [mute, setMute] = useState(true);
   const audioRef = useRef(null);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   useEffect(() => {
     audioRef.current = new Audio(music);
@@ -16,6 +17,7 @@ export default function Music() {
   }, []);
 
   const changeStatus = () => {
+    setIsZoomed(true);
     setMute(!mute);
 
     if (mute) {
@@ -29,14 +31,22 @@ export default function Music() {
   return (
     <>
       <button
-        className="flex items-center justify-center w-10 h-10 p-2 bg-black rounded-full hover:w-[42px] hover:h-[42px] transition-all duration-100"
+        className={`flex items-center justify-center w-10 h-10 p-2 bg-black rounded-full  ${
+          isZoomed ? 'animate-zoom' : ''
+        }`}
         onClick={changeStatus}
+        onAnimationEnd={() => setIsZoomed(false)}
       >
-        {mute ? (
-          <MdOutlineMusicOff className="text-2xl text-yellow-400" />
-        ) : (
-          <MdOutlineMusicNote className="text-2xl text-yellow-400" />
-        )}
+        <MdOutlineMusicOff
+          className={`text-2xl transition-opacity duration-300 ease-in-out text-yellow-400 ${
+            mute ? 'opacity-100' : 'opacity-0 w-0 h-0'
+          }`}
+        />
+        <MdOutlineMusicNote
+          className={`text-2xl transition-opacity duration-300 ease-in-out text-yellow-400 ${
+            mute ? 'opacity-0 w-0 h-0' : 'opacity-100'
+          }`}
+        />
       </button>
     </>
   );
