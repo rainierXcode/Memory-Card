@@ -1,19 +1,9 @@
 import luffyGif from '../assets/gif/luffy.gif';
-import { useState, useEffect } from 'react';
 
-export default function Loading() {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 4000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
+export default function Loading({ isLoading }) {
   return (
     <div
-      className={loading ? 'fixed z-10 flex items-center justify-center w-full h-full' : 'hidden'}
+      className={isLoading ? 'fixed z-20 flex items-center justify-center w-full h-full' : 'hidden'}
     >
       <div className="flex flex-col items-center justify-center">
         <img src={luffyGif} alt="Luffy_Gif" className="w-40 h-auto aspect-square animate-bounce" />
