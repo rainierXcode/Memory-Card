@@ -15,6 +15,14 @@
   font-weight: normal;
   font-size: normal;
 }
+
+@font-face {
+  font-family: 'Playpen_Sans_Bold';
+  src: url('/src/assets/fonts/Playpen_Sans/static/PlaypenSans-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-size: normal;
+}
+
 .textLogo {
   -webkit-text-stroke: 1px white;
 }

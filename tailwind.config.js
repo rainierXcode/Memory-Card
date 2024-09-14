@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         TradeWinds: ['TradeWinds', 'sans-serif'],
         Acme: ['Acme', 'sans-serif'],
+        Playpen_Sans_Bold: ['Playpen_Sans_Bold', 'sans-serif'],
       },
 
       keyframes: {
